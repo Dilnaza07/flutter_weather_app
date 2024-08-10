@@ -1,20 +1,19 @@
 part of 'city_search_bloc.dart';
 
 class CitySearchState extends Equatable {
-  final CurrentWeatherResponseDto? data;
+  final WeatherData? data;
   final bool isLoading;
 
-  const CitySearchState({this.data, required this.isLoading});
+  const CitySearchState({this.data,  this.isLoading=false});
 
   CitySearchState copyWith({
-    CurrentWeatherResponseDto? data,
+    WeatherData? data,
     bool? isLoading,
   }) {
     return CitySearchState(
         data: data ?? this.data, isLoading: isLoading ?? this.isLoading);
   }
-
+//если нал возьми старую инфу
   @override
-  // TODO: implement props
   List<Object?> get props => [data];
 }

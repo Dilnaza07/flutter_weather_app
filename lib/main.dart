@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_weather_app/features/sity_search/data/api/sity_search_api.dart';
 import 'package:flutter_weather_app/features/sity_search/presentation/bloc/city_search_bloc.dart';
 
 import 'features/sity_search/presentation/screen/city_search_page.dart';
