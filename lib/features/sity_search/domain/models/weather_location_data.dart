@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 
 class WeatherLocationData extends Equatable {
-  final String name;
-  final String region;
-  final String country;
-  final double lat;
-  final double Lon;
-  final int localtime_epoch;
-  final String localtime;
+  final String? name;
+  final String? region;
+  final String? country;
+  final double? lat;
+  final double? Lon;
+  final int? localtime_epoch;
+  final String? localtime;
 
   WeatherLocationData(
       {required this.name,

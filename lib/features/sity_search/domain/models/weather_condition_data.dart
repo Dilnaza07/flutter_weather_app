@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 
 class ConditionData extends Equatable {
-  final String text;
-  final String icon;
-  final int code;
+  final String? text;
+  final String? icon;
+  final int? code;
 
   ConditionData(
       {required this.text, required this.icon, required this.code});

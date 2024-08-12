@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_weather_app/features/sity_search/data/api/sity_search_api.dart';
-import 'package:flutter_weather_app/features/sity_search/data/repository/city_search_repository_impl.dart';
 import 'package:flutter_weather_app/features/sity_search/domain/models/weather_data.dart';
 
-import '../../data/models/current_weather_response-dto.dart';
-import '../../domain/repository/city_search_repository.dart';
+import '../../domain/repository/city_search_interactor.dart';
+import '../mappers/weather_model_mapper.dart';
+import '../models/weather_model.dart';
 
 part 'sity_search_state.dart';
 
@@ -14,7 +13,8 @@ part 'sity_search_event.dart';
 
 class CitySearchBloc extends Bloc<CitySearchEvent, CitySearchState> {
   final searchController = TextEditingController();
-  final CitySearchRepository _citySearchRepository = CitySearchRepositoryImpl();
+  final CitySearchInteractor _citySearchInteractor = CitySearchInteractor();
+  final WeatherModelMapper _weatherModelMapper = WeatherModelMapper();
 
   CitySearchBloc() : super(const CitySearchState(isLoading: false)) {
     on<CitySearchDataFetched>(_onCitySearchDataFetched);
@@ -23,9 +23,11 @@ class CitySearchBloc extends Bloc<CitySearchEvent, CitySearchState> {
   void _onCitySearchDataFetched(
       CitySearchDataFetched event, Emitter<CitySearchState> emit) async {
     emit(state.copyWith(isLoading: true));
-    final data =
-        await _citySearchRepository.fetchCurrentWeatherData(query: searchController.text);
+    final data = await _citySearchInteractor.fetchCurrentWeatherData(
+        query: searchController.text);
 
-    emit(state.copyWith(data: data, isLoading: false));
+    final model =
+        data != null ? _weatherModelMapper.mapToWeatherData(data) : null;
+    emit(state.copyWith(data: model, isLoading: false));
   }
 }

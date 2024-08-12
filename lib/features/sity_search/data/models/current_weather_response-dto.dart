@@ -10,8 +10,8 @@ class CurrentWeatherResponseDto extends Equatable{
 
   factory CurrentWeatherResponseDto.fromJson(Map<String, dynamic> json) {
     return CurrentWeatherResponseDto(
-      location: CurrentWeatherLocationResponseDto.fromJson(json['location']),
-      current: CurrentWeatherCurrentResponseDto.fromJson(json['current']),
+      location: CurrentWeatherLocationResponseDto?.fromJson(json['location']),
+      current: CurrentWeatherCurrentResponseDto?.fromJson(json['current']),
     );
   }
 

@@ -10,9 +10,12 @@ import '../../domain/models/weather_data.dart';
 
 class CitySearchMapper {
   WeatherData mapToWeatherData(CurrentWeatherResponseDto dto) {
+    final location = dto.location;
+    final current = dto.current;
     return WeatherData(
-        location: mapToWeatherLocationData(dto.location),
-        current: mapToWeatherCurrentData(dto.current));
+      location: location == null ? null : mapToWeatherLocationData(location),
+      current: current != null ? mapToWeatherCurrentData(current) : null,
+    );
   }
 
   WeatherLocationData mapToWeatherLocationData(
@@ -29,13 +32,14 @@ class CitySearchMapper {
 
   WeatherCurrentData mapToWeatherCurrentData(
       CurrentWeatherCurrentResponseDto dto) {
+    final condition = dto.condition;
     return WeatherCurrentData(
         lastUpdatedEpoch: dto.lastUpdatedEpoch,
         lastUpdated: dto.lastUpdated,
         tempC: dto.tempC,
         tempF: dto.tempF,
         isDay: dto.isDay,
-        condition: mapToConditionData(dto.condition),
+        condition: condition != null ? mapToConditionData(condition) : null,
         windMph: dto.windMph,
         windKph: dto.windKph,
         windDegree: dto.windDegree,
