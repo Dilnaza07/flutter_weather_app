@@ -10,6 +10,7 @@ class WeatherCurrentModel extends Equatable {
   final double windKph;
   final int windDegree;
   final double pressureMb;
+  final double pressureIn;
   final double precipMm;
   final int humidity;
   final int cloud;
@@ -25,6 +26,7 @@ class WeatherCurrentModel extends Equatable {
     required this.windKph,
     required this.windDegree,
     required this.pressureMb,
+    required this.pressureIn,
     required this.precipMm,
     required this.humidity,
     required this.cloud,
@@ -42,6 +44,7 @@ class WeatherCurrentModel extends Equatable {
         windKph,
         windDegree,
         pressureMb,
+        pressureIn,
         precipMm,
         humidity,
         cloud,

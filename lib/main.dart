@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_app/features/sity_search/presentation/bloc/city_search_bloc.dart';
+import 'package:flutter_weather_app/features/sity_search/presentation/screen/my_city_search_screen.dart';
 
 import 'features/sity_search/presentation/screen/city_search_page.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider(
         create: (context) => CitySearchBloc(),
-        child: SearchWeatherPage(),
+        child: MyCitySearchScreen(),
       ),
     );
   }

@@ -28,6 +28,7 @@ class CitySearchBloc extends Bloc<CitySearchEvent, CitySearchState> {
 
     final model =
         data != null ? _weatherModelMapper.mapToWeatherData(data) : null;
+
     emit(state.copyWith(data: model, isLoading: false));
   }
 }
