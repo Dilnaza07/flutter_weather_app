@@ -43,6 +43,7 @@ class WeatherModelMapper {
       feelslikeC: domain.feelslikeC ?? 0,
       visKm: domain.visKm ?? 0,
       uv: domain.uv ?? 0,
+      pressureIn: (domain.pressureIn?? 0)*25.4,
     );
   }
 
