@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../weather_details/presentation/screen/weather_details_page.dart';
 import '../bloc/city_search_bloc.dart';
 import '../widgets/ditail_view.dart';
 
@@ -110,11 +111,51 @@ class SearchButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<CitySearchBloc>();
-    return FloatingActionButton(
-      onPressed: () => bloc.add(CitySearchDataFetched()),
-      child: Icon(Icons.search),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 49.0),
+          child: BlocBuilder<CitySearchBloc, CitySearchState>(
+            builder: (context, state) {
+              return FloatingActionButton(
+                onPressed: () async {
+                  final data = state.data;
+                  if (data == null) {
+                    return;
+                  }
+                  // Navigator.of(context)
+                  //     .push(MaterialPageRoute(
+                  //         builder: (context) => WeatherDetailsPage(
+                  //               weatherModel: data,
+                  //             )))
+                  //     .then((value) {
+                  //   if (value is String) {
+                  //     debugPrint(value);
+                  //   }
+                  // });
+
+                  final result =
+                      await Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => WeatherDetailsPage(
+                                weatherModel: data,
+                              )));
+
+                  if (result is String) {
+                    debugPrint(result);
+                  }
+                },
+                child: Icon(Icons.transit_enterexit),
+              );
+            },
+          ),
+        ),
+        FloatingActionButton(
+          heroTag: 'search',
+          onPressed: () => bloc.add(CitySearchDataFetched()),
+          child: Icon(Icons.search),
+        ),
+      ],
     );
   }
 }
-
-

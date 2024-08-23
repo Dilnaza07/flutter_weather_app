@@ -14,8 +14,27 @@ class WeatherModelMapper {
     final location = domain.location;
     final current = domain.current;
     return WeatherModel(
-      location: location != null ? mapToWeatherLocationData(location) : null,
-      current: current != null ? mapToWeatherCurrentData(current) : null,
+      location: location != null
+          ? mapToWeatherLocationData(location)
+          : WeatherLocationModel(
+              name: '', region: '', country: '', localtime: ''),
+      current: current != null
+          ? mapToWeatherCurrentData(current)
+          : WeatherCurrentModel(
+              lastUpdated: '',
+              tempC: 0,
+              isDay: 0,
+              condition: WeatherConditionState.unknown,
+              windKph: 0,
+              windDegree: 0,
+              pressureMb: 0,
+              pressureIn: 0,
+              precipMm: 0,
+              humidity: 0,
+              cloud: 0,
+              feelslikeC: 0,
+              visKm: 0,
+              uv: 0),
     );
   }
 
@@ -33,7 +52,9 @@ class WeatherModelMapper {
       lastUpdated: domain.lastUpdated ?? '',
       tempC: domain.tempC ?? 0,
       isDay: domain.isDay ?? 0,
-      condition: condition != null ? mapToConditionData(condition) : WeatherConditionState.unknown,
+      condition: condition != null
+          ? mapToConditionData(condition)
+          : WeatherConditionState.unknown,
       windKph: domain.windKph ?? 0,
       windDegree: domain.windDegree ?? 0,
       pressureMb: domain.pressureMb ?? 0,
@@ -43,7 +64,7 @@ class WeatherModelMapper {
       feelslikeC: domain.feelslikeC ?? 0,
       visKm: domain.visKm ?? 0,
       uv: domain.uv ?? 0,
-      pressureIn: (domain.pressureIn?? 0)*25.4,
+      pressureIn: (domain.pressureIn ?? 0) * 25.4,
     );
   }
 

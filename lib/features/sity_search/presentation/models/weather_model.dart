@@ -6,8 +6,8 @@ import 'package:flutter_weather_app/features/sity_search/presentation/models/wea
 
 class WeatherModel extends Equatable{
 
-  final WeatherLocationModel? location;
-  final WeatherCurrentModel? current;
+  final WeatherLocationModel location;
+  final WeatherCurrentModel current;
 
   WeatherModel({required this.location, required this.current});
 
