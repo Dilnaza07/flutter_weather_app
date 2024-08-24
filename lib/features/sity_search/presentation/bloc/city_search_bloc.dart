@@ -13,10 +13,10 @@ part 'sity_search_event.dart';
 
 class CitySearchBloc extends Bloc<CitySearchEvent, CitySearchState> {
   final searchController = TextEditingController();
-  final CitySearchInteractor _citySearchInteractor = CitySearchInteractor();
-  final WeatherModelMapper _weatherModelMapper = WeatherModelMapper();
+  final CitySearchInteractor _citySearchInteractor;
+  final WeatherModelMapper _weatherModelMapper;
 
-  CitySearchBloc() : super(const CitySearchState(isLoading: false)) {
+  CitySearchBloc(this._citySearchInteractor, this._weatherModelMapper) : super(const CitySearchState(isLoading: false)) {
     on<CitySearchDataFetched>(_onCitySearchDataFetched);
   }
 

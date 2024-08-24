@@ -5,8 +5,10 @@ import 'package:flutter_weather_app/features/sity_search/domain/repository/city_
 import '../api/sity_search_api.dart';
 
 class CitySearchRepositoryImpl extends CitySearchRepository {
-  final CitySearchApi _citySearchApi = CitySearchApi();
-  final CitySearchMapper _citySearchMapper = CitySearchMapper();
+  final CitySearchApi _citySearchApi;
+  final CitySearchMapper _citySearchMapper;
+
+  CitySearchRepositoryImpl(this._citySearchApi, this._citySearchMapper);
 
   @override
   Future<WeatherData?> fetchCurrentWeatherData({required String query}) async {

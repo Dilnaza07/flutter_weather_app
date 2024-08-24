@@ -3,7 +3,9 @@ import '../models/weather_data.dart';
 import 'city_search_repository.dart';
 
 class CitySearchInteractor {
-  final CitySearchRepository _repository = CitySearchRepositoryImpl();
+  final CitySearchRepository _repository;
+
+  CitySearchInteractor(this._repository);
 
   Future<WeatherData?> fetchCurrentWeatherData({required String query}) async {
     return _repository.fetchCurrentWeatherData(query: query);

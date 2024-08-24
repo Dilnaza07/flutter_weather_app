@@ -11,6 +11,7 @@ class CitySearchApi {
   Future<CurrentWeatherResponseDto?> fetchCurrentWeatherData(
       {required String query}) async {
 
+
     final url = Uri.parse(
         '${NetworkConstants.baseUrl}/current.json?key=${NetworkConstants.apiKey}&q=$query&aqi=no');
 
