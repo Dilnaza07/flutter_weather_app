@@ -12,7 +12,7 @@ part 'sity_search_state.dart';
 part 'sity_search_event.dart';
 
 class CitySearchBloc extends Bloc<CitySearchEvent, CitySearchState> {
-  final searchController = TextEditingController();
+  final searchController = TextEditingController(text: 'Bishkek');
   final CitySearchInteractor _citySearchInteractor;
   final WeatherModelMapper _weatherModelMapper;
 

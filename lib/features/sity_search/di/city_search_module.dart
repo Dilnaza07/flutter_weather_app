@@ -5,12 +5,13 @@ import 'package:flutter_weather_app/features/sity_search/domain/repository/city_
 import 'package:flutter_weather_app/features/sity_search/presentation/mappers/weather_model_mapper.dart';
 
 import '../../../core/di/main_module.dart';
+import '../domain/repository/city_search_repository.dart';
 import '../presentation/bloc/city_search_bloc.dart';
 
 void initCitySearchModule() {
   getIt.registerLazySingleton(() => CitySearchApi());
   getIt.registerFactory(() => CitySearchMapper());
-  getIt.registerLazySingleton<CitySearchRepositoryImpl>(
+  getIt.registerLazySingleton<CitySearchRepository>(
       () => CitySearchRepositoryImpl(getIt(), getIt()));
   getIt.registerFactory(() => CitySearchInteractor(getIt()));
   getIt.registerFactory(() => WeatherModelMapper());
