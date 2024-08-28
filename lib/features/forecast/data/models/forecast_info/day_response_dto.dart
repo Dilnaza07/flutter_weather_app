@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
-import 'forecast_weather_condition_response-dto.dart';
+import '../forecast_condition_response-dto.dart';
 
-class ForecastDayResponseDto extends Equatable {
+class DayResponseDto extends Equatable {
   double? maxtempC;
   double? maxtempF;
   double? mintempC;
@@ -21,10 +21,10 @@ class ForecastDayResponseDto extends Equatable {
   int? dailyChanceOfRain;
   int? dailyWillItSnow;
   int? dailyChanceOfSnow;
-  ForecastWeatherConditionResponseDto? condition;
+  ForecastConditionResponseDto? condition;
   int? uv;
 
-  ForecastDayResponseDto(
+  DayResponseDto(
       {required this.maxtempC,
       required this.maxtempF,
       required this.mintempC,
@@ -46,7 +46,7 @@ class ForecastDayResponseDto extends Equatable {
       required this.condition,
       required this.uv});
 
-  ForecastDayResponseDto.fromJson(Map<String, dynamic> json) {
+  DayResponseDto.fromJson(Map<String, dynamic> json) {
     maxtempC = json['maxtemp_c'];
     maxtempF = json['maxtemp_f'];
     mintempC = json['mintemp_c'];
@@ -66,9 +66,36 @@ class ForecastDayResponseDto extends Equatable {
     dailyWillItSnow = json['daily_will_it_snow'];
     dailyChanceOfSnow = json['daily_chance_of_snow'];
     condition = json['condition'] != null
-        ? new ForecastWeatherConditionResponseDto.fromJson(json['condition'])
+        ? new ForecastConditionResponseDto.fromJson(json['condition'])
         : null;
     uv = json['uv'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['maxtemp_c'] = this.maxtempC;
+    data['maxtemp_f'] = this.maxtempF;
+    data['mintemp_c'] = this.mintempC;
+    data['mintemp_f'] = this.mintempF;
+    data['avgtemp_c'] = this.avgtempC;
+    data['avgtemp_f'] = this.avgtempF;
+    data['maxwind_mph'] = this.maxwindMph;
+    data['maxwind_kph'] = this.maxwindKph;
+    data['totalprecip_mm'] = this.totalprecipMm;
+    data['totalprecip_in'] = this.totalprecipIn;
+    data['totalsnow_cm'] = this.totalsnowCm;
+    data['avgvis_km'] = this.avgvisKm;
+    data['avgvis_miles'] = this.avgvisMiles;
+    data['avghumidity'] = this.avghumidity;
+    data['daily_will_it_rain'] = this.dailyWillItRain;
+    data['daily_chance_of_rain'] = this.dailyChanceOfRain;
+    data['daily_will_it_snow'] = this.dailyWillItSnow;
+    data['daily_chance_of_snow'] = this.dailyChanceOfSnow;
+    if (this.condition != null) {
+      data['condition'] = this.condition!.toJson();
+    }
+    data['uv'] = this.uv;
+    return data;
   }
 
   @override

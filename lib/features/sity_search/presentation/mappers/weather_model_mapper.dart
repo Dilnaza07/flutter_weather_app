@@ -38,7 +38,7 @@ class WeatherModelMapper {
     );
   }
 
-  WeatherLocationModel mapToWeatherLocationData(WeatherLocationData domain) {
+  WeatherLocationModel mapToWeatherLocationData(ForecastLocationData domain) {
     return WeatherLocationModel(
         name: domain.name ?? '',
         region: domain.region ?? '',
@@ -46,7 +46,7 @@ class WeatherModelMapper {
         localtime: domain.localtime ?? '');
   }
 
-  WeatherCurrentModel mapToWeatherCurrentData(WeatherCurrentData domain) {
+  WeatherCurrentModel mapToWeatherCurrentData(ForecastCurrentData domain) {
     final condition = domain.condition;
     return WeatherCurrentModel(
       lastUpdated: domain.lastUpdated ?? '',

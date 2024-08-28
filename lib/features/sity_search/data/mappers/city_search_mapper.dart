@@ -18,9 +18,9 @@ class CitySearchMapper {
     );
   }
 
-  WeatherLocationData mapToWeatherLocationData(
-      CurrentWeatherLocationResponseDto dto) {
-    return WeatherLocationData(
+  ForecastLocationData mapToWeatherLocationData(
+      ForecastLocationResponseDto dto) {
+    return ForecastLocationData(
         name: dto.name,
         region: dto.region,
         country: dto.country,
@@ -30,10 +30,10 @@ class CitySearchMapper {
         localtime: dto.localtime);
   }
 
-  WeatherCurrentData mapToWeatherCurrentData(
-      CurrentWeatherCurrentResponseDto dto) {
+  ForecastCurrentData mapToWeatherCurrentData(
+      ForecastCurrentResponseDto dto) {
     final condition = dto.condition;
-    return WeatherCurrentData(
+    return ForecastCurrentData(
         lastUpdatedEpoch: dto.lastUpdatedEpoch,
         lastUpdated: dto.lastUpdated,
         tempC: dto.tempC,

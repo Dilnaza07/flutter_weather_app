@@ -1,15 +1,14 @@
-
 import 'package:equatable/equatable.dart';
 
-import 'forecast_weather_condition_response-dto.dart';
+import 'forecast_condition_data.dart';
 
-class ForecastWeatherCurrentResponseDto extends Equatable {
+class ForecastCurrentData extends Equatable {
   final int? lastUpdatedEpoch;
   final String? lastUpdated;
   final double? tempC;
   final double? tempF;
   final int? isDay;
-  final ForecastWeatherConditionResponseDto? condition;
+  final ForecastConditionData? condition;
   final double? windMph;
   final double? windKph;
   final int? windDegree;
@@ -34,7 +33,7 @@ class ForecastWeatherCurrentResponseDto extends Equatable {
   final double? gustMph;
   final double? gustKph;
 
-  ForecastWeatherCurrentResponseDto(
+  ForecastCurrentData(
       {required this.lastUpdatedEpoch,
       required this.lastUpdated,
       required this.tempC,
@@ -64,40 +63,6 @@ class ForecastWeatherCurrentResponseDto extends Equatable {
       required this.uv,
       required this.gustMph,
       required this.gustKph});
-
-  factory ForecastWeatherCurrentResponseDto.fromJson(Map<String, dynamic> json) {
-    return ForecastWeatherCurrentResponseDto(
-      lastUpdatedEpoch: json['last_updated_epoch'],
-      lastUpdated: json['last_updated'],
-      tempC: json['temp_c'].toDouble(),
-      tempF: json['temp_f'].toDouble(),
-      isDay: json['is_day'],
-      condition: ForecastWeatherConditionResponseDto.fromJson(json['condition']),
-      windMph: json['wind_mph'].toDouble(),
-      windKph: json['wind_kph'].toDouble(),
-      windDegree: json['wind_degree'],
-      windDir: json['wind_dir'],
-      pressureMb: json['pressure_mb'].toDouble(),
-      pressureIn: json['pressure_in'].toDouble(),
-      precipMm: json['precip_mm'].toDouble(),
-      precipIn: json['precip_in'].toDouble(),
-      humidity: json['humidity'],
-      cloud: json['cloud'],
-      feelslikeC: json['feelslike_c'].toDouble(),
-      feelslikeF: json['feelslike_f'].toDouble(),
-      windchillC: json['windchill_c'].toDouble(),
-      windchillF: json['windchill_f'].toDouble(),
-      heatindexC: json['heatindex_c'].toDouble(),
-      heatindexF: json['heatindex_f'].toDouble(),
-      dewpointC: json['dewpoint_c'].toDouble(),
-      dewpointF: json['dewpoint_f'].toDouble(),
-      visKm: json['vis_km'].toDouble(),
-      visMiles: json['vis_miles'].toDouble(),
-      uv: json['uv'].toDouble(),
-      gustMph: json['gust_mph'].toDouble(),
-      gustKph: json['gust_kph'].toDouble(),
-    );
-  }
 
   @override
   String toString() {

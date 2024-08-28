@@ -1,7 +1,7 @@
 
 import 'package:equatable/equatable.dart';
 
-import 'weather_condition_response-dto.dart';
+import 'forecast_condition_response-dto.dart';
 
 class ForecastCurrentResponseDto extends Equatable {
   final int? lastUpdatedEpoch;
@@ -9,7 +9,7 @@ class ForecastCurrentResponseDto extends Equatable {
   final double? tempC;
   final double? tempF;
   final int? isDay;
-  final WeatherConditionResponseDto? condition;
+  final ForecastConditionResponseDto? condition;
   final double? windMph;
   final double? windKph;
   final int? windDegree;
@@ -72,7 +72,7 @@ class ForecastCurrentResponseDto extends Equatable {
       tempC: json['temp_c'].toDouble(),
       tempF: json['temp_f'].toDouble(),
       isDay: json['is_day'],
-      condition: WeatherConditionResponseDto.fromJson(json['condition']),
+      condition: ForecastConditionResponseDto.fromJson(json['condition']),
       windMph: json['wind_mph'].toDouble(),
       windKph: json['wind_kph'].toDouble(),
       windDegree: json['wind_degree'],
@@ -97,6 +97,42 @@ class ForecastCurrentResponseDto extends Equatable {
       gustMph: json['gust_mph'].toDouble(),
       gustKph: json['gust_kph'].toDouble(),
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['last_updated_epoch'] = this.lastUpdatedEpoch;
+    data['last_updated'] = this.lastUpdated;
+    data['temp_c'] = this.tempC;
+    data['temp_f'] = this.tempF;
+    data['is_day'] = this.isDay;
+    if (this.condition != null) {
+      data['condition'] = this.condition!.toJson();
+    }
+    data['wind_mph'] = this.windMph;
+    data['wind_kph'] = this.windKph;
+    data['wind_degree'] = this.windDegree;
+    data['wind_dir'] = this.windDir;
+    data['pressure_mb'] = this.pressureMb;
+    data['pressure_in'] = this.pressureIn;
+    data['precip_mm'] = this.precipMm;
+    data['precip_in'] = this.precipIn;
+    data['humidity'] = this.humidity;
+    data['cloud'] = this.cloud;
+    data['feelslike_c'] = this.feelslikeC;
+    data['feelslike_f'] = this.feelslikeF;
+    data['windchill_c'] = this.windchillC;
+    data['windchill_f'] = this.windchillF;
+    data['heatindex_c'] = this.heatindexC;
+    data['heatindex_f'] = this.heatindexF;
+    data['dewpoint_c'] = this.dewpointC;
+    data['dewpoint_f'] = this.dewpointF;
+    data['vis_km'] = this.visKm;
+    data['vis_miles'] = this.visMiles;
+    data['uv'] = this.uv;
+    data['gust_mph'] = this.gustMph;
+    data['gust_kph'] = this.gustKph;
+    return data;
   }
 
   @override

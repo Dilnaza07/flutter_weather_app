@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class CurrentWeatherLocationResponseDto extends Equatable {
+class ForecastLocationResponseDto extends Equatable {
   final String? name;
   final String? region;
   final String? country;
@@ -9,7 +9,7 @@ class CurrentWeatherLocationResponseDto extends Equatable {
   final int? localtime_epoch;
   final String? localtime;
 
-  CurrentWeatherLocationResponseDto(
+  ForecastLocationResponseDto(
       {required this.name,
       required this.region,
       required this.country,
@@ -18,9 +18,9 @@ class CurrentWeatherLocationResponseDto extends Equatable {
       required this.localtime_epoch,
       required this.localtime});
 
-  factory CurrentWeatherLocationResponseDto.fromJson(
+  factory ForecastLocationResponseDto.fromJson(
       Map<String, dynamic> json) {
-    return CurrentWeatherLocationResponseDto(
+    return ForecastLocationResponseDto(
       name: json['name'],
       region: json['region'],
       country: json['country'],

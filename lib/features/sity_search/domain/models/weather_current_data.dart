@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_weather_app/features/sity_search/domain/models/weather_condition_data.dart';
 
 
-class WeatherCurrentData extends Equatable {
+class ForecastCurrentData extends Equatable {
   final int? lastUpdatedEpoch;
   final String? lastUpdated;
   final double? tempC;
@@ -34,7 +34,7 @@ class WeatherCurrentData extends Equatable {
   final double? gustMph;
   final double? gustKph;
 
-  WeatherCurrentData(
+  ForecastCurrentData(
       {required this.lastUpdatedEpoch,
       required this.lastUpdated,
       required this.tempC,

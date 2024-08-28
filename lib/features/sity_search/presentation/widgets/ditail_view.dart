@@ -9,11 +9,11 @@ class DetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CitySearchBloc, CitySearchState>(
         builder: (context, state) {
-      final windKph = state.data?.current?.windKph;
-      final humidity = state.data?.current?.humidity;
+      final windKph = state.data?.current.windKph;
+      final humidity = state.data?.current.humidity;
       final pressureIn =
-          state.data?.current?.pressureIn?.toStringAsFixed(0);
-      final precipMm = state.data?.current?.precipMm;
+          state.data?.current.pressureIn.toStringAsFixed(0);
+      final precipMm = state.data?.current.precipMm;
 
 
       return Container(

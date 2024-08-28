@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
 
-import 'forecast_weather_condition_response-dto.dart';
+import '../forecast_condition_response-dto.dart';
 
-class ForecastHourResponseDto extends Equatable {
+class HourResponseDto extends Equatable {
   int? timeEpoch;
   String? time;
   double? tempC;
   double? tempF;
   int? isDay;
-  ForecastWeatherConditionResponseDto? condition;
+  ForecastConditionResponseDto? condition;
   double? windMph;
   double? windKph;
   int? windDegree;
@@ -38,7 +38,7 @@ class ForecastHourResponseDto extends Equatable {
   double? gustKph;
   int? uv;
 
-  ForecastHourResponseDto(
+  HourResponseDto(
       {this.timeEpoch,
       this.time,
       this.tempC,
@@ -74,14 +74,14 @@ class ForecastHourResponseDto extends Equatable {
       this.gustKph,
       this.uv});
 
-  ForecastHourResponseDto.fromJson(Map<String, dynamic> json) {
+  HourResponseDto.fromJson(Map<String, dynamic> json) {
     timeEpoch = json['time_epoch'];
     time = json['time'];
     tempC = json['temp_c'];
     tempF = json['temp_f'];
     isDay = json['is_day'];
     condition = json['condition'] != null
-        ? new ForecastWeatherConditionResponseDto.fromJson(json['condition'])
+        ? new ForecastConditionResponseDto.fromJson(json['condition'])
         : null;
     windMph = json['wind_mph'];
     windKph = json['wind_kph'];
@@ -111,6 +111,47 @@ class ForecastHourResponseDto extends Equatable {
     gustMph = json['gust_mph'];
     gustKph = json['gust_kph'];
     uv = json['uv'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['time_epoch'] = this.timeEpoch;
+    data['time'] = this.time;
+    data['temp_c'] = this.tempC;
+    data['temp_f'] = this.tempF;
+    data['is_day'] = this.isDay;
+    if (this.condition != null) {
+      data['condition'] = this.condition!.toJson();
+    }
+    data['wind_mph'] = this.windMph;
+    data['wind_kph'] = this.windKph;
+    data['wind_degree'] = this.windDegree;
+    data['wind_dir'] = this.windDir;
+    data['pressure_mb'] = this.pressureMb;
+    data['pressure_in'] = this.pressureIn;
+    data['precip_mm'] = this.precipMm;
+    data['precip_in'] = this.precipIn;
+    data['snow_cm'] = this.snowCm;
+    data['humidity'] = this.humidity;
+    data['cloud'] = this.cloud;
+    data['feelslike_c'] = this.feelslikeC;
+    data['feelslike_f'] = this.feelslikeF;
+    data['windchill_c'] = this.windchillC;
+    data['windchill_f'] = this.windchillF;
+    data['heatindex_c'] = this.heatindexC;
+    data['heatindex_f'] = this.heatindexF;
+    data['dewpoint_c'] = this.dewpointC;
+    data['dewpoint_f'] = this.dewpointF;
+    data['will_it_rain'] = this.willItRain;
+    data['chance_of_rain'] = this.chanceOfRain;
+    data['will_it_snow'] = this.willItSnow;
+    data['chance_of_snow'] = this.chanceOfSnow;
+    data['vis_km'] = this.visKm;
+    data['vis_miles'] = this.visMiles;
+    data['gust_mph'] = this.gustMph;
+    data['gust_kph'] = this.gustKph;
+    data['uv'] = this.uv;
+    return data;
   }
 
   @override
