@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 import 'weather_condition_response-dto.dart';
 
-class ForecastCurrentResponseDto extends Equatable {
+class CurrentWeatherCurrentResponseDto extends Equatable {
   final int? lastUpdatedEpoch;
   final String? lastUpdated;
   final double? tempC;
@@ -34,7 +34,7 @@ class ForecastCurrentResponseDto extends Equatable {
   final double? gustMph;
   final double? gustKph;
 
-  ForecastCurrentResponseDto(
+  CurrentWeatherCurrentResponseDto(
       {required this.lastUpdatedEpoch,
       required this.lastUpdated,
       required this.tempC,
@@ -65,8 +65,8 @@ class ForecastCurrentResponseDto extends Equatable {
       required this.gustMph,
       required this.gustKph});
 
-  factory ForecastCurrentResponseDto.fromJson(Map<String, dynamic> json) {
-    return ForecastCurrentResponseDto(
+  factory CurrentWeatherCurrentResponseDto.fromJson(Map<String, dynamic> json) {
+    return CurrentWeatherCurrentResponseDto(
       lastUpdatedEpoch: json['last_updated_epoch'],
       lastUpdated: json['last_updated'],
       tempC: json['temp_c'].toDouble(),

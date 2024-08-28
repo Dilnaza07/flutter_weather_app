@@ -3,15 +3,15 @@ import 'package:flutter_weather_app/features/sity_search/data/models/current_wea
 import 'package:flutter_weather_app/features/sity_search/data/models/current_weather_location_response-dto.dart';
 
 class CurrentWeatherResponseDto extends Equatable{
-  final ForecastLocationResponseDto location;
-  final ForecastCurrentResponseDto current;
+  final CurrentWeatherLocationResponseDto location;
+  final CurrentWeatherCurrentResponseDto current;
 
   CurrentWeatherResponseDto({required this.location, required this.current});
 
   factory CurrentWeatherResponseDto.fromJson(Map<String, dynamic> json) {
     return CurrentWeatherResponseDto(
-      location: ForecastLocationResponseDto?.fromJson(json['location']),
-      current: ForecastCurrentResponseDto?.fromJson(json['current']),
+      location: CurrentWeatherLocationResponseDto?.fromJson(json['location']),
+      current: CurrentWeatherCurrentResponseDto?.fromJson(json['current']),
     );
   }
 

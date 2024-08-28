@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_weather_app/features/sity_search/domain/models/weather_condition_data.dart';
 
 
-class ForecastCurrentData extends Equatable {
+class WeatherCurrentData extends Equatable {
   final int? lastUpdatedEpoch;
   final String? lastUpdated;
   final double? tempC;
@@ -34,7 +34,7 @@ class ForecastCurrentData extends Equatable {
   final double? gustMph;
   final double? gustKph;
 
-  ForecastCurrentData(
+  WeatherCurrentData(
       {required this.lastUpdatedEpoch,
       required this.lastUpdated,
       required this.tempC,
@@ -68,7 +68,7 @@ class ForecastCurrentData extends Equatable {
 
   @override
   String toString() {
-    return 'CurrentWeatherCurrentResponseDto{lastUpdatedEpoch: $lastUpdatedEpoch, lastUpdated: $lastUpdated, tempC: $tempC, tempF: $tempF, isDay: $isDay, condition: $condition, windMph: $windMph, windKph: $windKph, windDegree: $windDegree, windDir: $windDir, pressureMb: $pressureMb, pressureIn: $pressureIn, precipMm: $precipMm, precipIn: $precipIn, humidity: $humidity, cloud: $cloud, feelslikeC: $feelslikeC, feelslikeF: $feelslikeF, windchillC: $windchillC, windchillF: $windchillF, heatindexC: $heatindexC, heatindexF: $heatindexF, dewpointC: $dewpointC, dewpointF: $dewpointF, visKm: $visKm, visMiles: $visMiles, uv: $uv, gustMph: $gustMph, gustKph: $gustKph}';
+    return 'WeatherCurrentData{lastUpdatedEpoch: $lastUpdatedEpoch, lastUpdated: $lastUpdated, tempC: $tempC, tempF: $tempF, isDay: $isDay, condition: $condition, windMph: $windMph, windKph: $windKph, windDegree: $windDegree, windDir: $windDir, pressureMb: $pressureMb, pressureIn: $pressureIn, precipMm: $precipMm, precipIn: $precipIn, humidity: $humidity, cloud: $cloud, feelslikeC: $feelslikeC, feelslikeF: $feelslikeF, windchillC: $windchillC, windchillF: $windchillF, heatindexC: $heatindexC, heatindexF: $heatindexF, dewpointC: $dewpointC, dewpointF: $dewpointF, visKm: $visKm, visMiles: $visMiles, uv: $uv, gustMph: $gustMph, gustKph: $gustKph}';
   }
 
   @override

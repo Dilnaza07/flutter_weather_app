@@ -17,28 +17,28 @@ class WeatherModelMapper {
       location: location != null
           ? mapToWeatherLocationData(location)
           : WeatherLocationModel(
-              name: '', region: '', country: '', localtime: ''),
+          name: '', region: '', country: '', localtime: ''),
       current: current != null
           ? mapToWeatherCurrentData(current)
           : WeatherCurrentModel(
-              lastUpdated: '',
-              tempC: 0,
-              isDay: 0,
-              condition: WeatherConditionState.unknown,
-              windKph: 0,
-              windDegree: 0,
-              pressureMb: 0,
-              pressureIn: 0,
-              precipMm: 0,
-              humidity: 0,
-              cloud: 0,
-              feelslikeC: 0,
-              visKm: 0,
-              uv: 0),
+          lastUpdated: '',
+          tempC: 0,
+          isDay: 0,
+          condition: WeatherConditionState.unknown,
+          windKph: 0,
+          windDegree: 0,
+          pressureMb: 0,
+          pressureIn: 0,
+          precipMm: 0,
+          humidity: 0,
+          cloud: 0,
+          feelslikeC: 0,
+          visKm: 0,
+          uv: 0),
     );
   }
 
-  WeatherLocationModel mapToWeatherLocationData(ForecastLocationData domain) {
+  WeatherLocationModel mapToWeatherLocationData(WeatherLocationData domain) {
     return WeatherLocationModel(
         name: domain.name ?? '',
         region: domain.region ?? '',
@@ -46,7 +46,7 @@ class WeatherModelMapper {
         localtime: domain.localtime ?? '');
   }
 
-  WeatherCurrentModel mapToWeatherCurrentData(ForecastCurrentData domain) {
+  WeatherCurrentModel mapToWeatherCurrentData(WeatherCurrentData domain) {
     final condition = domain.condition;
     return WeatherCurrentModel(
       lastUpdated: domain.lastUpdated ?? '',
@@ -70,7 +70,7 @@ class WeatherModelMapper {
 
   WeatherConditionState mapToConditionData(ConditionData domain) {
     return WeatherConditionState.values.firstWhere(
-      (element) => element.code == domain.code,
+          (element) => element.code == domain.code,
       orElse: () => WeatherConditionState.unknown,
     );
   }

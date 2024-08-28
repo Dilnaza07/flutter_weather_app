@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class ForecastLocationData extends Equatable {
+class WeatherLocationData extends Equatable {
   final String? name;
   final String? region;
   final String? country;
@@ -9,7 +9,7 @@ class ForecastLocationData extends Equatable {
   final int? localtime_epoch;
   final String? localtime;
 
-  ForecastLocationData(
+  WeatherLocationData(
       {required this.name,
       required this.region,
       required this.country,
@@ -22,7 +22,7 @@ class ForecastLocationData extends Equatable {
 
   @override
   String toString() {
-    return 'CurrentWeatherLocationResponseDto{name: $name, region: $region, country: $country, lat: $lat, Lon: $Lon, localtime_epoch: $localtime_epoch, localtime: $localtime}';
+    return 'WeatherLocationData{name: $name, region: $region, country: $country, lat: $lat, Lon: $Lon, localtime_epoch: $localtime_epoch, localtime: $localtime}';
   }
 
   @override

@@ -26,12 +26,15 @@ class ForecastMapper {
     return ForecastData(
       location: location == null ? null : mapToForecastLocationData(location),
       current: current != null ? mapToForecastCurrentData(current) : null,
-      forecast: forecast == null ? null : mapToForecastData(forecast),
+      forecast: forecast == null ? null : mapToForecastInfoData(forecast),
     );
   }
 
   ForecastInfoData mapToForecastInfoData(ForecastInfoResponseDto dto) {
-    return ForecastInfoData(day: dto.forecastday);
+    //final forecastDay = dto.forecastday?.map((item) => mapToDayData(item));
+    final forecastDay = dto.forecastday?.map(mapToDayData).toList();
+    return ForecastInfoData(
+        forecastDay: forecastDay != null ? forecastDay : null);
   }
 
   ForecastDayData mapToForecastDayData(ForecastDayResponseDto dto) {

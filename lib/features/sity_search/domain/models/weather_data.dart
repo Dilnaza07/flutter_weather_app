@@ -3,8 +3,8 @@ import 'package:flutter_weather_app/features/sity_search/domain/models/weather_c
 import 'package:flutter_weather_app/features/sity_search/domain/models/weather_location_data.dart';
 
 class WeatherData extends Equatable{
-  final ForecastLocationData? location;
-  final ForecastCurrentData? current;
+  final WeatherLocationData? location;
+  final WeatherCurrentData? current;
 
   WeatherData({required this.location, required this.current});
 
