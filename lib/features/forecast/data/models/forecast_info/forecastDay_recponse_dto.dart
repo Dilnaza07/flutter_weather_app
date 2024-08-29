@@ -18,12 +18,15 @@ class ForecastDayResponseDto extends Equatable {
       required this.hour});
 
   factory ForecastDayResponseDto.fromJson(Map<String, dynamic> json) {
+    var list = json['hour'] as List;
+    List<HourResponseDto> hourList =
+        list.map((element) => HourResponseDto.fromJson(element)).toList();
     return ForecastDayResponseDto(
       date: json['date'],
       dateEpoch: json['date_epoch'],
-      day: json['day'],
-      astro: json['astro'],
-      hour: json['hour'],
+      day: DayResponseDto.fromJson(json['day']),
+      astro: AstroResponseDto.fromJson(json['astro']),
+      hour: hourList,
     );
   }
 

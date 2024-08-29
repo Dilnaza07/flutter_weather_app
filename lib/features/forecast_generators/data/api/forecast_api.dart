@@ -4,7 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_weather_app/core/network/constants.dart';
 import 'package:http/http.dart';
 
-import '../models/forecast_response_dto.dart';
+import '../models_jsonserializable/forecast_response_dto.dart';
+
 
 class ForecastApi {
   Future<ForecastResponseDto?> fetchForecastWeatherData(

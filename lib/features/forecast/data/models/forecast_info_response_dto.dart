@@ -1,29 +1,28 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_weather_app/features/forecast/data/models/forecast_info/day_response_dto.dart';
+
+import 'forecast_info/forecastDay_recponse_dto.dart';
 
 class ForecastInfoResponseDto extends Equatable {
-
-  List<DayResponseDto>? forecastday;
+  final List<ForecastDayResponseDto>? forecastday;
 
   ForecastInfoResponseDto({this.forecastday});
 
-  ForecastInfoResponseDto.fromJson(Map<String, dynamic> json) {
-    if (json['forecastday'] != null) {
-      forecastday = <DayResponseDto>[];
-      json['forecastday'].forEach((v) {
-        forecastday!.add(new DayResponseDto.fromJson(v));
-      });
-    }
+  factory ForecastInfoResponseDto.fromJson(Map<String, dynamic> json) {
+    var list = json['forecastday'] as List;
+    List<ForecastDayResponseDto> forecastList =
+        list.map((e) => ForecastDayResponseDto.fromJson(e)).toList();
+   return ForecastInfoResponseDto(
+     forecastday: forecastList,
+   );
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.forecastday != null) {
-      data['forecastday'] = this.forecastday!.map((v) => v.toJson()).toList();
+      data['forecastday'] = this.forecastday!.map((day) => day.toJson()).toList();
     }
     return data;
   }
-
 
   @override
   String toString() {
@@ -32,7 +31,5 @@ class ForecastInfoResponseDto extends Equatable {
 
   @override
   // TODO: implement props
-  List<Object?> get props => [
-    forecastday
-  ];
+  List<Object?> get props => [forecastday];
 }

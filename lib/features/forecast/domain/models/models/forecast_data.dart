@@ -1,10 +1,11 @@
 
+import 'package:equatable/equatable.dart';
 import 'package:flutter_weather_app/features/forecast/domain/models/models/forecast_info_data.dart';
 
 import 'forecast_current_data.dart';
 import 'forecast_location_data.dart';
 
-class ForecastData {
+class ForecastData extends Equatable{
   final ForecastLocationData? location;
   final ForecastCurrentData? current;
   final ForecastInfoData? forecast;

@@ -13,11 +13,11 @@ class HourData extends Equatable {
   double? windKph;
   int? windDegree;
   String? windDir;
-  int? pressureMb;
+  double? pressureMb;
   double? pressureIn;
   double? precipMm;
-  int? precipIn;
-  int? snowCm;
+  double? precipIn;
+  double? snowCm;
   int? humidity;
   int? cloud;
   double? feelslikeC;
@@ -32,11 +32,11 @@ class HourData extends Equatable {
   int? chanceOfRain;
   int? willItSnow;
   int? chanceOfSnow;
-  int? visKm;
-  int? visMiles;
+  double? visKm;
+  double? visMiles;
   double? gustMph;
   double? gustKph;
-  int? uv;
+  double? uv;
 
   HourData(
       {this.timeEpoch,

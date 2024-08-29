@@ -13,11 +13,11 @@ class HourResponseDto extends Equatable {
   double? windKph;
   int? windDegree;
   String? windDir;
-  int? pressureMb;
+  double? pressureMb;
   double? pressureIn;
   double? precipMm;
-  int? precipIn;
-  int? snowCm;
+  double? precipIn;
+  double? snowCm;
   int? humidity;
   int? cloud;
   double? feelslikeC;
@@ -32,85 +32,85 @@ class HourResponseDto extends Equatable {
   int? chanceOfRain;
   int? willItSnow;
   int? chanceOfSnow;
-  int? visKm;
-  int? visMiles;
+  double? visKm;
+  double? visMiles;
   double? gustMph;
   double? gustKph;
-  int? uv;
+  double? uv;
 
   HourResponseDto(
       {this.timeEpoch,
-      this.time,
-      this.tempC,
-      this.tempF,
-      this.isDay,
-      this.condition,
-      this.windMph,
-      this.windKph,
-      this.windDegree,
-      this.windDir,
-      this.pressureMb,
-      this.pressureIn,
-      this.precipMm,
-      this.precipIn,
-      this.snowCm,
-      this.humidity,
-      this.cloud,
-      this.feelslikeC,
-      this.feelslikeF,
-      this.windchillC,
-      this.windchillF,
-      this.heatindexC,
-      this.heatindexF,
-      this.dewpointC,
-      this.dewpointF,
-      this.willItRain,
-      this.chanceOfRain,
-      this.willItSnow,
-      this.chanceOfSnow,
-      this.visKm,
-      this.visMiles,
-      this.gustMph,
-      this.gustKph,
-      this.uv});
+        this.time,
+        this.tempC,
+        this.tempF,
+        this.isDay,
+        this.condition,
+        this.windMph,
+        this.windKph,
+        this.windDegree,
+        this.windDir,
+        this.pressureMb,
+        this.pressureIn,
+        this.precipMm,
+        this.precipIn,
+        this.snowCm,
+        this.humidity,
+        this.cloud,
+        this.feelslikeC,
+        this.feelslikeF,
+        this.windchillC,
+        this.windchillF,
+        this.heatindexC,
+        this.heatindexF,
+        this.dewpointC,
+        this.dewpointF,
+        this.willItRain,
+        this.chanceOfRain,
+        this.willItSnow,
+        this.chanceOfSnow,
+        this.visKm,
+        this.visMiles,
+        this.gustMph,
+        this.gustKph,
+        this.uv});
 
   HourResponseDto.fromJson(Map<String, dynamic> json) {
     timeEpoch = json['time_epoch'];
     time = json['time'];
-    tempC = json['temp_c'];
-    tempF = json['temp_f'];
+    tempC = json['temp_c'].toDouble();
+    tempF = json['temp_f'].toDouble();
     isDay = json['is_day'];
     condition = json['condition'] != null
         ? new ForecastConditionResponseDto.fromJson(json['condition'])
         : null;
-    windMph = json['wind_mph'];
-    windKph = json['wind_kph'];
+    windMph = json['wind_mph'].toDouble();
+    windKph = json['wind_kph'].toDouble();
     windDegree = json['wind_degree'];
     windDir = json['wind_dir'];
-    pressureMb = json['pressure_mb'];
-    pressureIn = json['pressure_in'];
-    precipMm = json['precip_mm'];
-    precipIn = json['precip_in'];
-    snowCm = json['snow_cm'];
+    pressureMb = json['pressure_mb'].toDouble();
+    pressureIn = json['pressure_in'].toDouble();
+    precipMm = json['precip_mm'].toDouble();
+    precipIn = json['precip_in'].toDouble();
+    snowCm = json['snow_cm'].toDouble();
     humidity = json['humidity'];
     cloud = json['cloud'];
-    feelslikeC = json['feelslike_c'];
-    feelslikeF = json['feelslike_f'];
-    windchillC = json['windchill_c'];
-    windchillF = json['windchill_f'];
-    heatindexC = json['heatindex_c'];
-    heatindexF = json['heatindex_f'];
-    dewpointC = json['dewpoint_c'];
-    dewpointF = json['dewpoint_f'];
+    feelslikeC = json['feelslike_c'].toDouble();
+    feelslikeF = json['feelslike_f'].toDouble();
+    windchillC = json['windchill_c'].toDouble();
+    windchillF = json['windchill_f'].toDouble();
+    heatindexC = json['heatindex_c'].toDouble();
+    heatindexF = json['heatindex_f'].toDouble();
+    dewpointC = json['dewpoint_c'].toDouble();
+    dewpointF = json['dewpoint_f'].toDouble();
     willItRain = json['will_it_rain'];
     chanceOfRain = json['chance_of_rain'];
     willItSnow = json['will_it_snow'];
     chanceOfSnow = json['chance_of_snow'];
-    visKm = json['vis_km'];
-    visMiles = json['vis_miles'];
-    gustMph = json['gust_mph'];
-    gustKph = json['gust_kph'];
-    uv = json['uv'];
+    visKm = json['vis_km'].toDouble();
+    visMiles = json['vis_miles'].toDouble();
+    gustMph = json['gust_mph'].toDouble();
+    gustKph = json['gust_kph'].toDouble();
+    uv = json['uv'].toDouble();
   }
 
   Map<String, dynamic> toJson() {
@@ -162,39 +162,39 @@ class HourResponseDto extends Equatable {
   @override
   // TODO: implement props
   List<Object?> get props => [
-        timeEpoch,
-        time,
-        tempC,
-        tempF,
-        isDay,
-        condition,
-        windMph,
-        windKph,
-        windDegree,
-        windDir,
-        pressureMb,
-        pressureIn,
-        precipMm,
-        precipIn,
-        snowCm,
-        humidity,
-        cloud,
-        feelslikeC,
-        feelslikeF,
-        windchillC,
-        windchillF,
-        heatindexC,
-        heatindexF,
-        dewpointC,
-        dewpointF,
-        willItRain,
-        chanceOfRain,
-        willItSnow,
-        chanceOfSnow,
-        visKm,
-        visMiles,
-        gustMph,
-        gustKph,
-        uv
-      ];
+    timeEpoch,
+    time,
+    tempC,
+    tempF,
+    isDay,
+    condition,
+    windMph,
+    windKph,
+    windDegree,
+    windDir,
+    pressureMb,
+    pressureIn,
+    precipMm,
+    precipIn,
+    snowCm,
+    humidity,
+    cloud,
+    feelslikeC,
+    feelslikeF,
+    windchillC,
+    windchillF,
+    heatindexC,
+    heatindexF,
+    dewpointC,
+    dewpointF,
+    willItRain,
+    chanceOfRain,
+    willItSnow,
+    chanceOfSnow,
+    visKm,
+    visMiles,
+    gustMph,
+    gustKph,
+    uv
+  ];
 }

@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_weather_app/features/sity_search/presentation/bloc/city_search_bloc.dart';
-import 'package:flutter_weather_app/features/sity_search/presentation/screen/my_city_search_screen.dart';
-
 import 'core/di/main_module.dart';
+import 'features/forecast/presentation/bloc/forecast_bloc.dart';
+import 'features/forecast/presentation/screen/my_forecast_screen.dart';
 
 void main() {
   initMainModule();
@@ -24,9 +23,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: BlocProvider(
-        create: (context) => getIt<CitySearchBloc>()
-          ..add(CitySearchDataFetched()),
-        child: MyCitySearchScreen(),
+        create: (context) => getIt<ForecastBloc>()
+          ..add(ForecastDataFetched()),
+        child: MyForecastScreen(),
       ),
     );
   }

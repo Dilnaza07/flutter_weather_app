@@ -1,6 +1,5 @@
 import 'package:flutter_weather_app/features/forecast/data/models/forecast_info/astro_response_dto.dart';
 import 'package:flutter_weather_app/features/forecast/data/models/forecast_info/day_response_dto.dart';
-import 'package:flutter_weather_app/features/forecast/data/models/forecast_info/forecastDay_recponse_dto.dart';
 import 'package:flutter_weather_app/features/forecast/data/models/forecast_info/hour_response_dto.dart';
 import 'package:flutter_weather_app/features/forecast/data/models/forecast_info_response_dto.dart';
 import 'package:flutter_weather_app/features/forecast/domain/models/models/forecast_info/astro_data.dart';
@@ -16,6 +15,7 @@ import '../../domain/models/models/forecast_location_data.dart';
 import '../models/forecast_condition_response-dto.dart';
 import '../models/forecast_current_response-dto.dart';
 import '../models/forecast_data_response_dto.dart';
+import '../models/forecast_info/forecastDay_recponse_dto.dart';
 import '../models/forecast_location_response-dto.dart';
 
 class ForecastMapper {
@@ -32,7 +32,7 @@ class ForecastMapper {
 
   ForecastInfoData mapToForecastInfoData(ForecastInfoResponseDto dto) {
     //final forecastDay = dto.forecastday?.map((item) => mapToDayData(item));
-    final forecastDay = dto.forecastday?.map(mapToDayData).toList();
+    final forecastDay = dto.forecastday?.map(mapToForecastDayData).toList();
     return ForecastInfoData(
         forecastDay: forecastDay != null ? forecastDay : null);
   }

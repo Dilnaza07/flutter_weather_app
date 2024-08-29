@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/features/forecast/presentation/models/forecast_model.dart';
 
 import '../../../sity_search/presentation/models/weather_model.dart';
 
 class WeatherDetailsPage extends StatelessWidget {
-  const WeatherDetailsPage({super.key, required this.weatherModel});
+  const WeatherDetailsPage({super.key, required this.forecastModel});
 
-  final WeatherModel weatherModel;
+  final ForecastModel forecastModel;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
-        title: Text(weatherModel.location.name, style: TextStyle(fontSize: 30),),
+        title: Text(forecastModel.location.name, style: TextStyle(fontSize: 30),),
         bottom: _BottomWidget(),
       ),
-      body: _Body(model: weatherModel,),
+      body: _Body(model: forecastModel,),
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       floatingActionButton: FloatingActionButton(onPressed: () {
-        Navigator.of(context).pop(weatherModel.location.country);
+        Navigator.of(context).pop(forecastModel.location.country);
       },
         child: Icon(Icons.abc),),
     );
@@ -30,7 +31,7 @@ class _Body extends StatelessWidget {
     super.key, required this.model,
   });
 
-  final WeatherModel model;
+  final ForecastModel model;
   @override
   Widget build(BuildContext context) {
     return Center(

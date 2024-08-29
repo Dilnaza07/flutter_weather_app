@@ -1,8 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_weather_app/features/forecast/domain/models/models/forecast_condition_data.dart';
+import 'package:flutter_weather_app/features/forecast/presentation/models/forecast_condition_model.dart';
+
+import '../forecast_condition_state.dart';
 
 
-class DayData extends Equatable {
+class DayModel extends Equatable {
   double? maxtempC;
   double? maxtempF;
   double? mintempC;
@@ -21,10 +24,11 @@ class DayData extends Equatable {
   double? dailyChanceOfRain;
   double? dailyWillItSnow;
   double? dailyChanceOfSnow;
-  ForecastConditionData? condition;
+  ForecastConditionState? condition;
   double? uv;
 
-  DayData(
+
+  DayModel(
       {required this.maxtempC,
         required this.maxtempF,
         required this.mintempC,
@@ -50,7 +54,7 @@ class DayData extends Equatable {
 
   @override
   String toString() {
-    return 'DayData{maxtempC: $maxtempC, maxtempF: $maxtempF, mintempC: $mintempC, mintempF: $mintempF, avgtempC: $avgtempC, avgtempF: $avgtempF, maxwindMph: $maxwindMph, maxwindKph: $maxwindKph, totalprecipMm: $totalprecipMm, totalprecipIn: $totalprecipIn, totalsnowCm: $totalsnowCm, avgvisKm: $avgvisKm, avgvisMiles: $avgvisMiles, avghumidity: $avghumidity, dailyWillItRain: $dailyWillItRain, dailyChanceOfRain: $dailyChanceOfRain, dailyWillItSnow: $dailyWillItSnow, dailyChanceOfSnow: $dailyChanceOfSnow, condition: $condition, uv: $uv}';
+    return 'DayModel{maxtempC: $maxtempC, maxtempF: $maxtempF, mintempC: $mintempC, mintempF: $mintempF, avgtempC: $avgtempC, avgtempF: $avgtempF, maxwindMph: $maxwindMph, maxwindKph: $maxwindKph, totalprecipMm: $totalprecipMm, totalprecipIn: $totalprecipIn, totalsnowCm: $totalsnowCm, avgvisKm: $avgvisKm, avgvisMiles: $avgvisMiles, avghumidity: $avghumidity, dailyWillItRain: $dailyWillItRain, dailyChanceOfRain: $dailyChanceOfRain, dailyWillItSnow: $dailyWillItSnow, dailyChanceOfSnow: $dailyChanceOfSnow, condition: $condition, uv: $uv}';
   }
 
   @override

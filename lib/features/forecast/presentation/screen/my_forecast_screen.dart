@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../weather_details/presentation/screen/weather_details_page.dart';
-import '../bloc/city_search_bloc.dart';
-import '../widgets/ditail_view.dart';
+import '../bloc/forecast_bloc.dart';
+import '../widgets/forecast_ditail_view.dart';
 
-class MyCitySearchScreen extends StatelessWidget {
-  const MyCitySearchScreen({super.key});
+class MyForecastScreen extends StatelessWidget {
+  const MyForecastScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class MyCitySearchScreen extends StatelessWidget {
           SizedBox(height: 80),
           MainWeatherForecastView(),
           SizedBox(height: 30),
-          DetailView(),
+          ForecastDetailView(),
         ]),
       ),
       floatingActionButton: SearchButton(),
@@ -47,7 +47,7 @@ class SearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<CitySearchBloc>();
+    final bloc = context.read<ForecastBloc>();
     return TextField(
       controller: bloc.searchController,
       decoration: InputDecoration(
@@ -65,43 +65,43 @@ class MainWeatherForecastView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CitySearchBloc, CitySearchState>(
+    return BlocBuilder<ForecastBloc, ForecastState>(
         builder: (context, state) {
-          final tempC = state.data?.current?.tempC;
-          final countryName = state.data?.location?.name;
-          final date = state.data?.current?.lastUpdated;
-          return Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      final tempC = state.data?.current?.tempC;
+      final countryName = state.data?.location?.name;
+      final date = state.data?.current?.lastUpdated;
+      return Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              '$tempCº',
+              style: TextStyle(fontSize: 50, color: Colors.white),
+            ),
+            SizedBox(width: 10),
+            Column(
               children: [
                 Text(
-                  '$tempCº',
-                  style: TextStyle(fontSize: 50, color: Colors.white),
+                  '$countryName',
+                  style: TextStyle(fontSize: 25, color: Colors.white),
                 ),
                 SizedBox(width: 10),
-                Column(
-                  children: [
-                    Text(
-                      '$countryName',
-                      style: TextStyle(fontSize: 25, color: Colors.white),
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      '$date',
-                      style: TextStyle(fontSize: 10, color: Colors.white),
-                    ),
-                  ],
-                ),
-                SizedBox(width: 10),
-                Icon(
-                  Icons.cloud_queue_sharp,
-                  size: 40,
-                  color: Colors.white,
+                Text(
+                  '$date',
+                  style: TextStyle(fontSize: 10, color: Colors.white),
                 ),
               ],
             ),
-          );
-        });
+            SizedBox(width: 10),
+            Icon(
+              Icons.cloud_queue_sharp,
+              size: 40,
+              color: Colors.white,
+            ),
+          ],
+        ),
+      );
+    });
   }
 }
 
@@ -110,13 +110,13 @@ class SearchButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<CitySearchBloc>();
+    final bloc = context.read<ForecastBloc>();
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 49.0),
-          child: BlocBuilder<CitySearchBloc, CitySearchState>(
+          child: BlocBuilder<ForecastBloc, ForecastState>(
             builder: (context, state) {
               return FloatingActionButton(
                 onPressed: () async {
@@ -135,18 +135,15 @@ class SearchButton extends StatelessWidget {
                   //   }
                   // });
 
+                  final result =
+                      await Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => WeatherDetailsPage(
+                                forecastModel: data,
+                              )));
 
-                  //переход на вторую страницу
-
-                  // final result =
-                  // await Navigator.of(context).push(MaterialPageRoute(
-                  //     builder: (context) => WeatherDetailsPage(
-                  //       weatherModel: data,
-                  //     )));
-                  //
-                  // if (result is String) {
-                  //   debugPrint(result);
-                  // }
+                  if (result is String) {
+                    debugPrint(result);
+                  }
                 },
                 child: Icon(Icons.transit_enterexit),
               );
@@ -155,7 +152,7 @@ class SearchButton extends StatelessWidget {
         ),
         FloatingActionButton(
           heroTag: 'search',
-          onPressed: () => bloc.add(CitySearchDataFetched()),
+          onPressed: () => bloc.add(ForecastDataFetched()),
           child: Icon(Icons.search),
         ),
       ],

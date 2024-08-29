@@ -12,17 +12,17 @@ class DayResponseDto extends Equatable {
   double? maxwindMph;
   double? maxwindKph;
   double? totalprecipMm;
-  int? totalprecipIn;
-  int? totalsnowCm;
-  int? avgvisKm;
-  int? avgvisMiles;
-  int? avghumidity;
-  int? dailyWillItRain;
-  int? dailyChanceOfRain;
-  int? dailyWillItSnow;
-  int? dailyChanceOfSnow;
+  double? totalprecipIn;
+  double? totalsnowCm;
+  double? avgvisKm;
+  double? avgvisMiles;
+  double? avghumidity;
+  double? dailyWillItRain;
+  double? dailyChanceOfRain;
+  double? dailyWillItSnow;
+  double? dailyChanceOfSnow;
   ForecastConditionResponseDto? condition;
-  int? uv;
+  double? uv;
 
   DayResponseDto(
       {required this.maxtempC,
@@ -47,28 +47,28 @@ class DayResponseDto extends Equatable {
       required this.uv});
 
   DayResponseDto.fromJson(Map<String, dynamic> json) {
-    maxtempC = json['maxtemp_c'];
-    maxtempF = json['maxtemp_f'];
-    mintempC = json['mintemp_c'];
-    mintempF = json['mintemp_f'];
-    avgtempC = json['avgtemp_c'];
-    avgtempF = json['avgtemp_f'];
-    maxwindMph = json['maxwind_mph'];
-    maxwindKph = json['maxwind_kph'];
-    totalprecipMm = json['totalprecip_mm'];
-    totalprecipIn = json['totalprecip_in'];
-    totalsnowCm = json['totalsnow_cm'];
-    avgvisKm = json['avgvis_km'];
-    avgvisMiles = json['avgvis_miles'];
-    avghumidity = json['avghumidity'];
-    dailyWillItRain = json['daily_will_it_rain'];
-    dailyChanceOfRain = json['daily_chance_of_rain'];
-    dailyWillItSnow = json['daily_will_it_snow'];
-    dailyChanceOfSnow = json['daily_chance_of_snow'];
+    maxtempC = json['maxtemp_c'].toDouble();
+    maxtempF = json['maxtemp_f'].toDouble();
+    mintempC = json['mintemp_c'].toDouble();
+    mintempF = json['mintemp_f'].toDouble();
+    avgtempC = json['avgtemp_c'].toDouble();
+    avgtempF = json['avgtemp_f'].toDouble();
+    maxwindMph = json['maxwind_mph'].toDouble();
+    maxwindKph = json['maxwind_kph'].toDouble();
+    totalprecipMm = json['totalprecip_mm'].toDouble();
+    totalprecipIn = json['totalprecip_in'].toDouble();
+    totalsnowCm = json['totalsnow_cm'].toDouble();
+    avgvisKm = json['avgvis_km'].toDouble();
+    avgvisMiles = json['avgvis_miles'].toDouble();
+    avghumidity = json['avghumidity'].toDouble();
+    dailyWillItRain = json['daily_will_it_rain'].toDouble();
+    dailyChanceOfRain = json['daily_chance_of_rain'].toDouble();
+    dailyWillItSnow = json['daily_will_it_snow'].toDouble();
+    dailyChanceOfSnow = json['daily_chance_of_snow'].toDouble();
     condition = json['condition'] != null
         ? new ForecastConditionResponseDto.fromJson(json['condition'])
         : null;
-    uv = json['uv'];
+    uv = json['uv'].toDouble();
   }
 
   Map<String, dynamic> toJson() {
