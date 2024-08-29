@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 import 'forecast_condition_model.dart';
-import 'forecast_condition_state.dart';
 
 class ForecastCurrentModel extends Equatable {
   final int lastUpdatedEpoch;
@@ -9,7 +8,7 @@ class ForecastCurrentModel extends Equatable {
   final double tempC;
   final double tempF;
   final int isDay;
-  final ForecastConditionState condition;
+  final ForecastConditionModel condition;
   final double windMph;
   final double windKph;
   final int windDegree;

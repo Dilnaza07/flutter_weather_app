@@ -24,7 +24,7 @@ class DayModel extends Equatable {
   double? dailyChanceOfRain;
   double? dailyWillItSnow;
   double? dailyChanceOfSnow;
-  ForecastConditionState? condition;
+  ForecastConditionModel? condition;
   double? uv;
 
 

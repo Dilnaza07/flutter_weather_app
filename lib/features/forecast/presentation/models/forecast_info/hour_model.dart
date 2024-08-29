@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_weather_app/features/forecast/domain/models/models/forecast_condition_data.dart';
 
 import '../forecast_condition_model.dart';
-import '../forecast_condition_state.dart';
 
 
 class HourModel extends Equatable {
@@ -11,7 +9,7 @@ class HourModel extends Equatable {
   double tempC;
   double tempF;
   int isDay;
-  ForecastConditionState condition;
+  ForecastConditionModel condition;
   double windMph;
   double windKph;
   int windDegree;

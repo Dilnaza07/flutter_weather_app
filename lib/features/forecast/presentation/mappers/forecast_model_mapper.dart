@@ -2,7 +2,6 @@ import 'package:flutter_weather_app/features/forecast/domain/models/models/forec
 import 'package:flutter_weather_app/features/forecast/domain/models/models/forecast_info/day_data.dart';
 import 'package:flutter_weather_app/features/forecast/domain/models/models/forecast_info/forecast_day_data.dart';
 import 'package:flutter_weather_app/features/forecast/domain/models/models/forecast_info/hour_data.dart';
-import 'package:flutter_weather_app/features/forecast/presentation/models/forecast_condition_state.dart';
 import 'package:flutter_weather_app/features/forecast/presentation/models/forecast_current_model.dart';
 import 'package:flutter_weather_app/features/forecast/presentation/models/forecast_model.dart';
 
@@ -28,46 +27,46 @@ class ForecastModelMapper {
       location: location != null
           ? mapToForecastLocationModel(location)
           : ForecastLocationModel(
-          name: '',
-          region: '',
-          country: '',
-          lat: 0,
-          lon: 0,
-          tzId: '',
-          localtimeEpoch: 0,
-          localtime: ''),
+              name: '',
+              region: '',
+              country: '',
+              lat: 0,
+              lon: 0,
+              tzId: '',
+              localtimeEpoch: 0,
+              localtime: ''),
       current: current != null
           ? mapToForecastCurrentModel(current)
           : ForecastCurrentModel(
-          lastUpdatedEpoch: 0,
-          lastUpdated: '',
-          tempC: 0,
-          tempF: 0,
-          isDay: 0,
-          condition: ForecastConditionState.unknown,
-          windMph: 0,
-          windKph: 0,
-          windDegree: 0,
-          windDir: '',
-          pressureMb: 0,
-          pressureIn: 0,
-          precipMm: 0,
-          precipIn: 0,
-          humidity: 0,
-          cloud: 0,
-          feelslikeC: 0,
-          feelslikeF: 0,
-          windchillC: 0,
-          windchillF: 0,
-          heatindexC: 0,
-          heatindexF: 0,
-          dewpointC: 0,
-          dewpointF: 0,
-          visKm: 0,
-          visMiles: 0,
-          uv: 0,
-          gustMph: 0,
-          gustKph: 0),
+              lastUpdatedEpoch: 0,
+              lastUpdated: '',
+              tempC: 0,
+              tempF: 0,
+              isDay: 0,
+              condition: ForecastConditionModel(text: '', icon: '', code: 0),
+              windMph: 0,
+              windKph: 0,
+              windDegree: 0,
+              windDir: '',
+              pressureMb: 0,
+              pressureIn: 0,
+              precipMm: 0,
+              precipIn: 0,
+              humidity: 0,
+              cloud: 0,
+              feelslikeC: 0,
+              feelslikeF: 0,
+              windchillC: 0,
+              windchillF: 0,
+              heatindexC: 0,
+              heatindexF: 0,
+              dewpointC: 0,
+              dewpointF: 0,
+              visKm: 0,
+              visMiles: 0,
+              uv: 0,
+              gustMph: 0,
+              gustKph: 0),
       forecast: forecast != null
           ? mapToForecastInfoModel(forecast)
           : ForecastInfoModel(forecastDay: []),
@@ -91,37 +90,37 @@ class ForecastModelMapper {
       day: day != null
           ? mapToDayModel(day)
           : DayModel(
-          maxtempC: 0,
-          maxtempF: 0,
-          mintempC: 0,
-          mintempF: 0,
-          avgtempC: 0,
-          avgtempF: 0,
-          maxwindMph: 0,
-          maxwindKph: 0,
-          totalprecipMm: 0,
-          totalprecipIn: 0,
-          totalsnowCm: 0,
-          avgvisKm: 0,
-          avgvisMiles: 0,
-          avghumidity: 0,
-          dailyWillItRain: 0,
-          dailyChanceOfRain: 0,
-          dailyWillItSnow: 0,
-          dailyChanceOfSnow: 0,
-          condition: ForecastConditionState.unknown,
-          uv: 0),
+              maxtempC: 0,
+              maxtempF: 0,
+              mintempC: 0,
+              mintempF: 0,
+              avgtempC: 0,
+              avgtempF: 0,
+              maxwindMph: 0,
+              maxwindKph: 0,
+              totalprecipMm: 0,
+              totalprecipIn: 0,
+              totalsnowCm: 0,
+              avgvisKm: 0,
+              avgvisMiles: 0,
+              avghumidity: 0,
+              dailyWillItRain: 0,
+              dailyChanceOfRain: 0,
+              dailyWillItSnow: 0,
+              dailyChanceOfSnow: 0,
+              condition: ForecastConditionModel(text: '', icon: '', code: 0),
+              uv: 0),
       astro: astro != null
           ? mapToAstroModel(astro)
           : AstroModel(
-          sunrise: '',
-          sunset: '',
-          moonrise: '',
-          moonset: '',
-          moonPhase: '',
-          moonIllumination: 0,
-          isMoonUp: 0,
-          isSunUp: 0),
+              sunrise: '',
+              sunset: '',
+              moonrise: '',
+              moonset: '',
+              moonPhase: '',
+              moonIllumination: 0,
+              isMoonUp: 0,
+              isSunUp: 0),
       hour: hour != null ? hour.map(mapToHourModel).toList() : [],
     );
   }
@@ -146,7 +145,7 @@ class ForecastModelMapper {
       dailyChanceOfSnow: domain.dailyChanceOfSnow ?? 0,
       condition: condition != null
           ? mapToConditionModel(condition)
-          : ForecastConditionState.unknown,
+          : ForecastConditionModel(text: '', icon: '', code: 0),
       uv: domain.uv ?? 0,
       maxtempF: domain.maxtempF ?? 0,
       mintempF: domain.mintempF ?? 0,
@@ -176,7 +175,7 @@ class ForecastModelMapper {
       isDay: domain.isDay ?? 0,
       condition: condition != null
           ? mapToConditionModel(condition)
-          : ForecastConditionState.unknown,
+          : ForecastConditionModel(text: '', icon: '', code: 0),
       windMph: domain.windMph ?? 0,
       windKph: domain.windKph ?? 0,
       windDegree: domain.windDegree ?? 0,
@@ -233,7 +232,7 @@ class ForecastModelMapper {
       isDay: domain.isDay ?? 0,
       condition: condition != null
           ? mapToConditionModel(condition)
-          : ForecastConditionState.unknown,
+          : ForecastConditionModel(text: '', icon: '', code: 0),
       windMph: domain.windMph ?? 0,
       windKph: domain.windKph ?? 0,
       windDegree: domain.windDegree ?? 0,
@@ -260,10 +259,16 @@ class ForecastModelMapper {
     );
   }
 
-  ForecastConditionState mapToConditionModel(ForecastConditionData domain) {
-    return ForecastConditionState.values.firstWhere(
-          (element) => element.code == domain.code,
-      orElse: () => ForecastConditionState.unknown,
-    );
+  ForecastConditionModel mapToConditionModel(ForecastConditionData domain) {
+    return ForecastConditionModel(
+        text: domain.text ?? '',
+        icon: domain.icon ?? '',
+        code: domain.code ?? 0);
   }
 }
+// ForecastConditionState mapToConditionModel(ForecastConditionData domain) {
+//   return ForecastConditionState.values.firstWhere(
+//         (element) => element.code == domain.code,
+//     orElse: () => ForecastConditionState.unknown,
+//   );
+// }
