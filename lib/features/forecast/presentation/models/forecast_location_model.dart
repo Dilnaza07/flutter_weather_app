@@ -8,7 +8,7 @@ class ForecastLocationModel extends Equatable {
   final double lon;
   final String tzId;
   final int localtimeEpoch;
-  final String localtime;
+  final DateTime localtime;
 
   ForecastLocationModel(
       {required this.name,

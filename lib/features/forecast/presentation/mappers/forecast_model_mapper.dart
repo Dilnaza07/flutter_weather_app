@@ -4,6 +4,7 @@ import 'package:flutter_weather_app/features/forecast/domain/models/models/forec
 import 'package:flutter_weather_app/features/forecast/domain/models/models/forecast_info/hour_data.dart';
 import 'package:flutter_weather_app/features/forecast/presentation/models/forecast_current_model.dart';
 import 'package:flutter_weather_app/features/forecast/presentation/models/forecast_model.dart';
+import 'package:intl/intl.dart';
 
 import '../../domain/models/models/forecast_condition_data.dart';
 import '../../domain/models/models/forecast_current_data.dart';
@@ -19,6 +20,7 @@ import '../models/forecast_info_model.dart';
 import '../models/forecast_location_model.dart';
 
 class ForecastModelMapper {
+
   ForecastModel mapToForecastModel(ForecastData domain) {
     final location = domain.location;
     final current = domain.current;
@@ -34,7 +36,7 @@ class ForecastModelMapper {
               lon: 0,
               tzId: '',
               localtimeEpoch: 0,
-              localtime: ''),
+              localtime: DateTime.now()),
       current: current != null
           ? mapToForecastCurrentModel(current)
           : ForecastCurrentModel(
@@ -81,10 +83,13 @@ class ForecastModelMapper {
   }
 
   ForecastDayModel mapToForecastDayModel(ForecastDayData domain) {
+
     final day = domain.day;
     final astro = domain.astro;
     final hour = domain.hour;
+    DateTime? date = DateFormat('yyyy-MM-dd HH:mm').tryParse(domain.date ?? '');
     return ForecastDayModel(
+     // date: date ?? DateTime.now(),
       date: domain.date ?? '',
       dateEpoch: domain.dateEpoch ?? 0,
       day: day != null
@@ -210,6 +215,9 @@ class ForecastModelMapper {
 
   ForecastLocationModel mapToForecastLocationModel(
       ForecastLocationData domain) {
+
+    DateTime? dateTime = DateFormat('yyyy-MM-dd HH:mm').tryParse(domain.localtime ?? '');
+
     return ForecastLocationModel(
       name: domain.name ?? '',
       region: domain.region ?? '',
@@ -217,7 +225,7 @@ class ForecastModelMapper {
       lat: domain.lat ?? 0,
       lon: domain.lon ?? 0,
       localtimeEpoch: domain.localtimeEpoch ?? 0,
-      localtime: domain.localtime ?? '',
+      localtime: dateTime ?? DateTime.now(),
       tzId: domain.tzId ?? '',
     );
   }
